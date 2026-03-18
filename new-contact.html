@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="add-contact-page">
+    <h1>Employee Management System</h1>
+    <h2>Add New Employee</h2>
+    <p>Please fill out the form below to register a new staff member into the system. Ensure all <b>contact details</b> are accurate before saving.</p>
+    <form>
+        <div>
+            <label for="id_number">ID Number:</label>
+            <input type="text" id="id_number" name="id_number" placeholder="Enter Identification Number">
+            <br><br>
+        </div>
+        <div>
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname" placeholder="Enter First Name">
+            <br><br>
+        </div>
+        <div>
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Enter Last Name">
+            <br><br>
+        </div>
+        <div>
+            <label>Gender: </label>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label>
+            <br><br>
+        </div>
+        <div>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="+2547-------">
+            <br><br>
+        </div>
+        <div>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="e.g yourname@gmail.com">
+            <br><br>
+        </div>
+        <div>
+            <label for="address">Physical Address:</label>
+            <textarea id="address" name="address" placeholder="Enter your pysical address"></textarea>
+            <br><br>
+        </div>
+        <div>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+            <br><br>
+        </div>
+        <div>
+    <label for="Position">Position:</label>
+    <select id="position" name="position" onchange="checkPosition()">
+    <option value="">--Select your Position--</option>
+    <option value="manager">Manager</option>
+    <option value="supervisor">Supervisor</option>
+    <option value="developer">Developer</option>
+    <option value="intern">Intern</option>
+    <option value="other">Other</option>
+</select><br><br>
+</div>
+<div>
+        <button type="submit">Save Contact</button>
+        <button type="reset">Clear Form</button>
+    </div>
+<div id="other-position-group" style="display: none; margin-top: 10px;">
+    <label for="other_position">Please specify:</label>
+    <input type="text" id="other_position" name="other_position" placeholder="Enter your position">
+</div>    
+    </form>
+    
+</body>
+</html>

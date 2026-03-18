@@ -127,3 +127,36 @@ p {
     color: #555;
     margin-bottom: 15px;
 }
+#add-contact-page form {
+    background-color: linear-gradient(135deg, #2c3e50, #0d282c);
+    max-width: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(224, 12, 12, 0.1);
+}
+#add-contact-page label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #060202;
+    text-align: left;
+}
+#add-contact-page input, 
+#add-contact-page select, 
+#add-contact-page textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #066570;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#add-contact-page .form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
