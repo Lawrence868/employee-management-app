@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Contacts.</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="ems-body" id="view-contacts-page">
+    <nav class="top-nav-bar">
+        <a href="index.html">Home</a> | 
+        <a href="new-contact.html">New Contact</a> | 
+        <a href="view-contacts.html">View All Contacts</a>
+    </nav>
+
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <div class="user-panel">
+                <div class="user-image">
+                    <img src="images/lau.jpeg" alt="Lawrence Kenga">
+                </div>
+                <div class="user-info">
+                    <p>Lawrence Kenga</p>
+                    <small><span class="online-circle"></span> Online</small>
+                </div>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li><br>
+                <li><a href="new-contact.html">Add New Contact</a></li><br>
+                <li><a href="view-contacts.html" class="active">View All Contacts</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            <div class="page-header">
+                <h1>Employee Contact Details</h1>
+                <p>This section provides a comprehensive overview of all employees within the organization, enabling users to easily view, search, and manage employee contact information in <b>one centralized location</b>. Each record includes essential details such as employee name, phone number, email address and their roles ensuring quick access to accurate and up-to-date information. Please note that employee contact details are <b>strictly confidential</b> and <b>must not</b> be shared with third parties or unauthorized personnel, as this would violate the company’s security policy. Any unauthorized disclosure may result in disciplinary measures and legal action in accordance with the laws of Kenya.</p>
+            </div>
+
+            <table class="employee-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>ID Number</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Position</th>
+                        <th>Department</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="employee-data">
+                    </tbody>
+            </table>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

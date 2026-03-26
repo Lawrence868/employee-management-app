@@ -3,79 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Contact</title>
+    <title>EMS - Add New Contact</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body id="add-contact-page">
-    <h1>Employee Management System</h1>
-    <h2>Add New Employee</h2>
-    <p>Please fill out the form below to register a new staff member into the system. Ensure all <b>contact details</b> are accurate before saving.</p>
-    <form>
-        <div>
-            <label for="id_number">ID Number:</label>
-            <input type="text" id="id_number" name="id_number" placeholder="Enter Identification Number">
-            <br><br>
-        </div>
-        <div>
-            <label for="firstname">First Name:</label>
-            <input type="text" id="firstname" name="firstname" placeholder="Enter First Name">
-            <br><br>
-        </div>
-        <div>
-            <label for="lastname">Last Name:</label>
-            <input type="text" id="lastname" name="lastname" placeholder="Enter Last Name">
-            <br><br>
-        </div>
-        <div>
-            <label>Gender: </label>
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Male</label>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Female</label>
-            <input type="radio" id="other" name="gender" value="other">
-            <label for="other">Other</label>
-            <br><br>
-        </div>
-        <div>
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" placeholder="+2547-------">
-            <br><br>
-        </div>
-        <div>
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" placeholder="e.g yourname@gmail.com">
-            <br><br>
-        </div>
-        <div>
-            <label for="address">Physical Address:</label>
-            <textarea id="address" name="address" placeholder="Enter your pysical address"></textarea>
-            <br><br>
-        </div>
-        <div>
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob">
-            <br><br>
-        </div>
-        <div>
-    <label for="Position">Position:</label>
-    <select id="position" name="position" onchange="checkPosition()">
-    <option value="">--Select your Position--</option>
-    <option value="manager">Manager</option>
-    <option value="supervisor">Supervisor</option>
-    <option value="developer">Developer</option>
-    <option value="intern">Intern</option>
-    <option value="other">Other</option>
-</select><br><br>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="user-panel">
+                <div class="user-image">
+                    <img src="images/lau.jpeg" alt="User Image" id="sidebar-profile-img">
+                </div>
+                <div class="user-info">
+                    <p>Lawrence Kenga</p>
+                    <small><span class="online-circle"></span> Online</small>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="new-contact.html" class="active">Add New Contact</a></li>
+                <li><a href="view-contacts.html">View All Contacts</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            <div class="page-header">
+                <h1>Employee Management System</h1>
+                <p>Register a new staff member. Ensure all <strong>contact details</strong> are accurate.</p>
+            </div>
+
+            <div class="form-card">
+                <div class="card-header">
+                    <h3>Add New Employee</h3>
+                </div>
+                <form id="contact-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="id_number">ID Number</label>
+                            <input type="text" id="id_number" required placeholder="Enter Identification Number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            <input type="text" id="firstname" required placeholder="Enter First Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" id="lastname" required placeholder="Enter Last Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="gender" value="male"> Male</label>
+                                <label><input type="radio" name="gender" value="female"> Female</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="+2547-------">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="e.g yourname@gmail.com" required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="address">Physical Address</label>
+                            <textarea id="address" rows="2" placeholder="Enter physical address"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob">
+                        </div>
+<div class="form-group">
+    <label for="position">Position</label>
+    <select id="position" name="position" required onchange="checkPosition(this.value)">
+        <option value="">--Select Position--</option>
+        <option value="Supervisor">Supervisor</option>
+        <option value="Sales Representative">Sales Representative</option>
+        <option value="Project Manager">Project Manager</option>
+        <option value="Receptionist">Receptionist</option>
+        <option value="Senior Web Developer">Senior Web Developer</option>
+        <option value="Junior Web Developer">Junior Web Developer</option>
+        <option value="Intern">Intern</option>
+        <option value="Other">Other</option>
+    </select>
 </div>
-<div>
-        <button type="submit">Save Contact</button>
-        <button type="reset">Clear Form</button>
+
+<div id="other-pos-group" class="form-group full-width" style="display: none;">
+    <label for="other_position">Please Specify your Position</label>
+    <input type="text" id="other_position" placeholder="Specify your specific role">
+</div>
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select id="department" onchange="checkDepartment(this.value)">
+                                <option value="">- Select Department -</option>
+                                <option value="IT">IT</option>
+                                <option value="Finance">Finance</option>
+                                <option value="HR">HR</option>
+                                <option value="Customer Relations">Customer Relations</option>
+                                <option value="Sales and Marketing">Sales and Marketing</option>
+                                <option value="Project Management Team">Project Management Team</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+
+                        <div id="other-dept-group" class="form-group full-width" style="display: none;">
+                            <label for="other_dept">Specify your Department</label>
+                            <input type="text" id="other_dept" placeholder="Enter your specific department">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-save">Save Contact</button>
+                        <button type="reset" class="btn-clear">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+        </main>
     </div>
-<div id="other-position-group" style="display: none; margin-top: 10px;">
-    <label for="other_position">Please specify:</label>
-    <input type="text" id="other_position" name="other_position" placeholder="Enter your position">
-</div>    
-    </form>
-    
+
+    <script src="main.js"></script>
 </body>
 </html>
