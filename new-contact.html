@@ -40,7 +40,7 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="id_number">ID Number</label>
-                            <input type="text" id="id_number" required placeholder="Enter Identification Number" required>
+                            <input type="text" id="id_number" required placeholder="Enter 8-digit ID" maxlength="8">
                         </div>
 
                         <div class="form-group">
@@ -63,7 +63,7 @@
 
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" placeholder="+2547-------">
+                            <input type="tel" id="phone" placeholder="+2547-------" maxlength="13">
                         </div>
 
                         <div class="form-group">
@@ -82,7 +82,7 @@
                         </div>
 <div class="form-group">
     <label for="position">Position</label>
-    <select id="position" name="position" required onchange="checkPosition(this.value)">
+    <select id="position" name="position" required onchange="toggleOtherPosition(this.value)">
         <option value="">--Select Position--</option>
         <option value="Supervisor">Supervisor</option>
         <option value="Sales Representative">Sales Representative</option>
@@ -127,6 +127,23 @@
             </div>
         </main>
     </div>
+    <footer class="main-footer">
+    <div class="footer-content">
+        <p>For more information, follow us on our socials:</p>
+        <div class="social-icons">
+                <a href="https://www.linkedin.com/feed/" target="_blank" title="LinkedIn">
+                <img src="images/Linkdln.png" alt="LinkedIn">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" title="Instagram">
+                <img src="images/IG.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                <img src="images/FB.png" alt="Facebook">
+            </a>
+        </div>
+        <p class="copyright">&copy; 2026 Employee Management System | Designed by Lawrence Kenga</p>
+    </div>
+</footer>
 
     <script src="main.js"></script>
 </body>

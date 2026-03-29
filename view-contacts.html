@@ -7,12 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="ems-body" id="view-contacts-page">
-    <nav class="top-nav-bar">
-        <a href="index.html">Home</a> | 
-        <a href="new-contact.html">New Contact</a> | 
-        <a href="view-contacts.html">View All Contacts</a>
-    </nav>
-
     <div class="app-container">
         
         <aside class="sidebar">
@@ -38,7 +32,9 @@
                 <h1>Employee Contact Details</h1>
                 <p>This section provides a comprehensive overview of all employees within the organization, enabling users to easily view, search, and manage employee contact information in <b>one centralized location</b>. Each record includes essential details such as employee name, phone number, email address and their roles ensuring quick access to accurate and up-to-date information. Please note that employee contact details are <b>strictly confidential</b> and <b>must not</b> be shared with third parties or unauthorized personnel, as this would violate the company’s security policy. Any unauthorized disclosure may result in disciplinary measures and legal action in accordance with the laws of Kenya.</p>
             </div>
-
+            <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search by Name or ID Number...">
+            </div>
             <table class="employee-table">
                 <thead>
                     <tr>
@@ -47,8 +43,7 @@
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Email</th>
-                        <th>Position</th>
-                        <th>Department</th>
+                        <th>DOB</th> 
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -57,7 +52,23 @@
             </table>
         </main>
     </div>
-
+    <footer class="main-footer">
+    <div class="footer-content">
+        <p>For more information, follow us on our socials:</p>
+        <div class="social-icons">
+                <a href="https://www.linkedin.com/feed/" target="_blank" title="LinkedIn">
+                <img src="images/Linkdln.png" alt="LinkedIn">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" title="Instagram">
+                <img src="images/IG.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                <img src="images/FB.png" alt="Facebook">
+            </a>
+        </div>
+        <p class="copyright">&copy; 2026 Employee Management System | Designed by Lawrence Kenga</p>
+    </div>
+</footer>
     <script src="main.js"></script>
 </body>
 </html>
