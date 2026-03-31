@@ -15,21 +15,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         setTimeout(() => {
             dismissWelcome();
-        }, 2000);
+        }, 4000);
         function dismissWelcome() {
-    const overlay = document.getElementById('welcome-overlay');
-    const mainContent = document.querySelector('.reveal-content');
-    if (overlay && !overlay.classList.contains('welcome-hidden')) {
-        overlay.classList.add('welcome-hidden');
-        if (mainContent) mainContent.classList.add('content-visible');
-        setTimeout(() => {
-            overlay.style.display = 'none';
-        }, 800);
-    }
-}
+            const overlay = document.getElementById('welcome-overlay');
+            const mainContent = document.querySelector('.reveal-content');
+            if (overlay && !overlay.classList.contains('welcome-hidden')) {
+                overlay.classList.add('welcome-hidden');
+                if (mainContent) mainContent.classList.add('content-visible');
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 800);
+            }
+        }
     }
 
     if (addContactPage) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const editIndex = urlParams.get('edit');
+
+        if (editIndex !== null) {
+            const employees = JSON.parse(localStorage.getItem('ems_employees')) || [];
+            const emp = employees[editIndex];
+
+            if (emp) {
+                document.getElementById('id_number').value = emp.id;
+                document.getElementById('firstname').value = emp.firstname;
+                document.getElementById('lastname').value = emp.lastname;
+                document.getElementById('phone').value = emp.phone;
+                document.getElementById('email').value = emp.email;
+                document.getElementById('dob').value = emp.dob;
+                document.getElementById('position').value = emp.position;
+                document.getElementById('department').value = emp.department;
+                document.querySelector('#contact-form button[type="submit"]').innerText = "Update Employee Details";
+            }
+        }
+
         const dobInput = document.getElementById('dob');
         if (dobInput) {
             const today = new Date();
@@ -39,31 +59,31 @@ document.addEventListener('DOMContentLoaded', () => {
             dobInput.setAttribute("max", maxDate);
         }
 
-const idInput = document.getElementById('id_number');
-if (idInput) {
-    idInput.addEventListener('input', function() {
-        this.value = this.value.replace(/\D/g, '');
-    });
-}
-const phoneInput = document.getElementById('phone');
-if (phoneInput) {
-    phoneInput.addEventListener('input', function() {
-        let val = this.value;
-        if (val.startsWith('+')) {
-            this.value = '+' + val.substring(1).replace(/\D/g, '');
-        } else {
-            this.value = val.replace(/\D/g, '');
+        const idInput = document.getElementById('id_number');
+        if (idInput) {
+            idInput.addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '');
+            });
         }
-        const length = this.value.length;
-        if (this.value.startsWith('+')) {
-            this.style.borderColor = (length === 13) ? "#00a65a" : "#dd4b39";
-        } else if (this.value.startsWith('254')) {
-            this.style.borderColor = (length === 12) ? "#00a65a" : "#dd4b39";
-        } else {
-            this.style.borderColor = (length === 10) ? "#00a65a" : "#dd4b39";
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function() {
+                let val = this.value;
+                if (val.startsWith('+')) {
+                    this.value = '+' + val.substring(1).replace(/\D/g, '');
+                } else {
+                    this.value = val.replace(/\D/g, '');
+                }
+                const length = this.value.length;
+                if (this.value.startsWith('+')) {
+                    this.style.borderColor = (length === 13) ? "#00a65a" : "#dd4b39";
+                } else if (this.value.startsWith('254')) {
+                    this.style.borderColor = (length === 12) ? "#00a65a" : "#dd4b39";
+                } else {
+                    this.style.borderColor = (length === 10) ? "#00a65a" : "#dd4b39";
+                }
+            });
         }
-    });
-}
 
         const form = document.getElementById('contact-form');
         form.addEventListener('submit', (e) => {
@@ -99,10 +119,15 @@ if (phoneInput) {
             };
 
             let employees = JSON.parse(localStorage.getItem('ems_employees')) || [];
-            employees.push(newEmployee);
+            if (editIndex !== null) {
+                employees[editIndex] = newEmployee;
+                alert('Employee Updated Successfully!');
+            } else {
+                employees.push(newEmployee);
+                alert('Employee Registered Successfully!');
+            }
+            
             localStorage.setItem('ems_employees', JSON.stringify(employees));
-
-            alert('Employee Registered Successfully!');
             form.reset(); 
             window.location.href = "view-contacts.html"; 
         });
@@ -128,7 +153,7 @@ if (phoneInput) {
                         <td>${emp.dob}</td>
                         <td class="action-buttons">
                             <button class="btn-details" onclick="viewDetails(${index})">👁 Details</button>
-                            <button class="btn-edit" onclick="editEmployee()">📝 Edit</button>
+                            <button class="btn-edit" onclick="editEmployee(${index})">📝 Edit</button>
                             <button class="btn-delete" onclick="deleteEmployee(${index})">🗑 Delete</button>
                         </td>
                     </tr>
@@ -144,8 +169,8 @@ function viewDetails(index) {
     alert(`FULL EMPLOYEE DETAILS:\n\nName: ${emp.firstname} ${emp.lastname}\nID Number: ${emp.id}\nPhone: ${emp.phone}\nEmail: ${emp.email}\nDOB: ${emp.dob}\nPosition: ${emp.position}\nDepartment: ${emp.department}`);
 }
 
-function editEmployee() {
-    alert("Edit Alert: You are about to edit this employee's details.");
+function editEmployee(index) {
+    window.location.href = `new-contact.html?edit=${index}`;
 }
 
 function deleteEmployee(index) {
