@@ -170,7 +170,10 @@ function viewDetails(index) {
 }
 
 function editEmployee(index) {
-    window.location.href = `new-contact.html?edit=${index}`;
+    const confirmation = confirm("Are you sure you want to edit this employee's details?");
+    if (confirmation) {
+        window.location.href = `new-contact.html?edit=${index}`;
+    }
 }
 
 function deleteEmployee(index) {
