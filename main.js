@@ -121,17 +121,27 @@ document.addEventListener('DOMContentLoaded', () => {
             let employees = JSON.parse(localStorage.getItem('ems_employees')) || [];
             if (editIndex !== null) {
                 employees[editIndex] = newEmployee;
+                localStorage.setItem('ems_employees', JSON.stringify(employees));
                 alert('Employee Updated Successfully!');
+                window.location.href = "view-contacts.html";
             } else {
-                employees.push(newEmployee);
-                alert('Employee Registered Successfully!');
+               employees.push(newEmployee);
+                localStorage.setItem('ems_employees', JSON.stringify(employees));
+                showToast("Employee added successfully!");
+                form.reset();
             }
-            
-            localStorage.setItem('ems_employees', JSON.stringify(employees));
-            form.reset(); 
-            window.location.href = "view-contacts.html"; 
         });
+        function showToast(message) {
+    const toast = document.getElementById('toast-message');
+    if (toast) {
+        toast.innerText = message;
+        toast.style.display = 'block';
+        setTimeout(() => {
+            toast.style.display = 'none';
+        }, 3000); 
     }
+}
+}
 
     if (viewContactsPage) {
         const tableBody = document.getElementById('employee-data');
